@@ -1,8 +1,167 @@
 ### index discovery
 
-This module provides functions for discovering indices, and grouping them by root document QNames.
+##### xquery library module: http://marklogic.com/index-discovery
 
-_**Warning: this is experimental software!** This module uses un-supported features of MarkLogic Server, which are subject to modification or removal without notice._
+functions for discovering range indexes and grouping them by document-root QNames.
+
+ <em>
+   <strong>Warning: this is experimental software!</strong>
+   This module uses un-supported features of MarkLogic Server, which are subject to modification or removal without notice.
+ </em>
+
+Author:  Joe Bryan
+
+Version:  1.0.0
+
+#### Table of Contents
+
+* Functions: [idx:element-indexes\#0](#func_idx_element-indexes_0), [idx:element-indexes\#1](#func_idx_element-indexes_1), [idx:element-attribute-indexes\#0](#func_idx_element-attribute-indexes_0), [idx:element-attribute-indexes\#1](#func_idx_element-attribute-indexes_1), [idx:path-indexes\#0](#func_idx_path-indexes_0), [idx:path-indexes\#1](#func_idx_path-indexes_1), [idx:range-indexes\#0](#func_idx_range-indexes_0), [idx:range-indexes\#1](#func_idx_range-indexes_1), [idx:all\#0](#func_idx_all_0), [idx:expand-references\#1](#func_idx_expand-references_1), [idx:reference-to-map\#1](#func_idx_reference-to-map_1), [idx:reference-from-map\#1](#func_idx_reference-from-map_1)
+
+#### Functions
+
+##### <a name="func_idx_element-indexes_0"/> idx:element-indexes\#0
+```xquery
+idx:element-indexes() as map:map
+```
+
+ returns a map of `cts:element-reference` objects (one for each configured element-range index),
+ grouped by document-root QNames
+
+###### returns `map:map`
+
+##### <a name="func_idx_element-indexes_1"/> idx:element-indexes\#1
+```xquery
+idx:element-indexes($database as xs:unsignedLong) as map:map
+```
+
+ returns a map of `cts:element-reference` objects (one for each configured element-range index),
+ grouped by document-root QNames
+
+###### params
+
+* $database as `xs:unsignedLong`
+
+###### returns `map:map`
+
+##### <a name="func_idx_element-attribute-indexes_0"/> idx:element-attribute-indexes\#0
+```xquery
+idx:element-attribute-indexes() as map:map
+```
+
+ returns a map of `cts:element-attribute-reference` objects (one for each configured element-attribute-range index),
+ grouped by document-root QNames
+
+###### returns `map:map`
+
+##### <a name="func_idx_element-attribute-indexes_1"/> idx:element-attribute-indexes\#1
+```xquery
+idx:element-attribute-indexes($database as xs:unsignedLong) as map:map
+```
+
+ returns a map of `cts:element-attribute-reference` objects (one for each configured element-attribute-range index),
+ grouped by document-root QNames
+
+###### params
+
+* $database as `xs:unsignedLong`
+
+###### returns `map:map`
+
+##### <a name="func_idx_path-indexes_0"/> idx:path-indexes\#0
+```xquery
+idx:path-indexes() as map:map
+```
+
+ returns a map of `cts:path-reference` objects (one for each configured path-range index),
+ grouped by document-root QNames
+
+###### returns `map:map`
+
+##### <a name="func_idx_path-indexes_1"/> idx:path-indexes\#1
+```xquery
+idx:path-indexes($database as xs:unsignedLong) as map:map
+```
+
+ returns a map of `cts:path-reference` objects (one for each configured path-range index),
+ grouped by document-root QNames
+
+###### params
+
+* $database as `xs:unsignedLong`
+
+###### returns `map:map`
+
+##### <a name="func_idx_range-indexes_0"/> idx:range-indexes\#0
+```xquery
+idx:range-indexes() as map:map
+```
+
+ returns a map of `cts:reference` objects, grouped by document-root QNames
+
+###### returns `map:map`
+
+##### <a name="func_idx_range-indexes_1"/> idx:range-indexes\#1
+```xquery
+idx:range-indexes($database as xs:unsignedLong) as map:map
+```
+
+ returns a map of `cts:reference` objects, grouped by document-root QNames
+
+###### params
+
+* $database as `xs:unsignedLong`
+
+###### returns `map:map`
+
+##### <a name="func_idx_all_0"/> idx:all\#0
+```xquery
+idx:all() as map:map
+```
+
+ returns a map of map-serialized `cts:reference` objects, grouped by document-root QNames
+
+###### returns `map:map`
+
+##### <a name="func_idx_expand-references_1"/> idx:expand-references\#1
+```xquery
+idx:expand-references($indexes as map:map) as map:map
+```
+
+ replaces `cts:reference` objects with their map:map serialization, returns a new map
+
+###### params
+
+* $indexes as `map:map`
+
+###### returns `map:map`
+
+##### <a name="func_idx_reference-to-map_1"/> idx:reference-to-map\#1
+```xquery
+idx:reference-to-map($ref) as map:map
+```
+
+ constructs a map from a `cts:reference` object
+
+###### params
+
+* $ref
+
+###### returns `map:map`
+
+##### <a name="func_idx_reference-from-map_1"/> idx:reference-from-map\#1
+```xquery
+idx:reference-from-map($map as map:map) as cts:reference?
+```
+
+ constructs a `cts:reference` object from a map
+
+###### params
+
+* $map as `map:map`
+
+###### returns `cts:reference?`
+
+*Generated by [xquerydoc](https://github.com/xquery/xquerydoc)*
 
 ### License Information
 
