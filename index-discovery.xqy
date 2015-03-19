@@ -134,41 +134,5 @@ declare function idx:expand-references($indexes as map:map) as map:map
     return
       map:entry($key,
         for $val in map:get($indexes, $key)
-        return idx:reference-to-map($val)))
-};
-
-(:~
- : constructs a map from a `cts:reference` object
- :)
-declare function idx:reference-to-map($ref) as map:map
-{
-  let $ref :=
-    if ($ref instance of element())
-    then $ref
-    else document { $ref }/*
-  return
-    map:new((
-      map:entry("ref-type", fn:local-name($ref)),
-      for $x in $ref/*
-      return map:entry(fn:local-name($x), $x/fn:string())))
-};
-
-(:~
- : constructs a `cts:reference` object from a map
- :)
-declare function idx:reference-from-map($map as map:map) as cts:reference?
-{
-  let $ref-type := map:get($map, "ref-type")
-  return
-    if (fn:exists($ref-type))
-    then
-      cts:reference-parse(
-        element { "cts:" || $ref-type } {
-          for $key in map:keys($map)[. ne "ref-type"]
-          return
-            element { "cts:" || $key } {
-              map:get($map, $key)
-            }
-        })
-    else ()
+        return ctx:reference-to-map($val)))
 };
