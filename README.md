@@ -15,7 +15,7 @@ Version:  1.0.0
 
 #### Table of Contents
 
-* Functions: [idx:element-indexes\#0](#func_idx_element-indexes_0), [idx:element-indexes\#1](#func_idx_element-indexes_1), [idx:element-attribute-indexes\#0](#func_idx_element-attribute-indexes_0), [idx:element-attribute-indexes\#1](#func_idx_element-attribute-indexes_1), [idx:path-indexes\#0](#func_idx_path-indexes_0), [idx:path-indexes\#1](#func_idx_path-indexes_1), [idx:field-indexes\#0](#func_idx_field-indexes_0), [idx:field-indexes\#1](#func_idx_field-indexes_1), [idx:range-indexes\#0](#func_idx_range-indexes_0), [idx:range-indexes\#1](#func_idx_range-indexes_1), [idx:all\#0](#func_idx_all_0), [idx:expand-references\#1](#func_idx_expand-references_1)
+* Functions: [idx:element-indexes\#0](#func_idx_element-indexes_0), [idx:element-indexes\#1](#func_idx_element-indexes_1), [idx:element-attribute-indexes\#0](#func_idx_element-attribute-indexes_0), [idx:element-attribute-indexes\#1](#func_idx_element-attribute-indexes_1), [idx:path-indexes\#0](#func_idx_path-indexes_0), [idx:path-indexes\#1](#func_idx_path-indexes_1), [idx:field-indexes\#0](#func_idx_field-indexes_0), [idx:field-indexes\#1](#func_idx_field-indexes_1), [idx:geospatial-attribute-pair-indexes\#0](#func_idx_geospatial-attribute-pair-indexes_0), [idx:geospatial-attribute-pair-indexes\#1](#func_idx_geospatial-attribute-pair-indexes_1), [idx:geospatial-element-child-indexes\#0](#func_idx_geospatial-element-child-indexes_0), [idx:geospatial-element-child-indexes\#1](#func_idx_geospatial-element-child-indexes_1), [idx:geospatial-element-pair-indexes\#0](#func_idx_geospatial-element-pair-indexes_0), [idx:geospatial-element-pair-indexes\#1](#func_idx_geospatial-element-pair-indexes_1), [idx:geospatial-element-indexes\#0](#func_idx_geospatial-element-indexes_0), [idx:geospatial-element-indexes\#1](#func_idx_geospatial-element-indexes_1), [idx:geospatial-path-indexes\#0](#func_idx_geospatial-path-indexes_0), [idx:geospatial-path-indexes\#1](#func_idx_geospatial-path-indexes_1), [idx:range-indexes\#0](#func_idx_range-indexes_0), [idx:range-indexes\#1](#func_idx_range-indexes_1), [idx:all\#0](#func_idx_all_0), [idx:expand-references\#1](#func_idx_expand-references_1)
 
 #### Functions
 
@@ -115,12 +115,133 @@ idx:field-indexes($database as xs:unsignedLong) as map:map
 
 ###### returns `map:map`
 
+##### <a name="func_idx_geospatial-attribute-pair-indexes_0"/> idx:geospatial-attribute-pair-indexes\#0
+```xquery
+idx:geospatial-attribute-pair-indexes() as map:map
+```
+
+ returns a map of `cts:geospatial-attribute-pair-reference` objects (one for each configured geospatial element-attribute-pair index),
+ grouped by document-root QNames
+
+###### returns `map:map`
+
+##### <a name="func_idx_geospatial-attribute-pair-indexes_1"/> idx:geospatial-attribute-pair-indexes\#1
+```xquery
+idx:geospatial-attribute-pair-indexes($database as xs:unsignedLong) as map:map
+```
+
+ returns a map of `cts:geospatial-attribute-pair-reference` objects (one for each configured geospatial element-attribute-pair index),
+ grouped by document-root QNames
+
+###### params
+
+* $database as `xs:unsignedLong`
+
+###### returns `map:map`
+
+##### <a name="func_idx_geospatial-element-child-indexes_0"/> idx:geospatial-element-child-indexes\#0
+```xquery
+idx:geospatial-element-child-indexes() as map:map
+```
+
+ returns a map of `cts:geospatial-element-child-reference` objects (one for each configured geospatial element-child index),
+ grouped by document-root QNames
+
+###### returns `map:map`
+
+##### <a name="func_idx_geospatial-element-child-indexes_1"/> idx:geospatial-element-child-indexes\#1
+```xquery
+idx:geospatial-element-child-indexes($database as xs:unsignedLong) as map:map
+```
+
+ returns a map of `cts:geospatial-element-child-reference` objects (one for each configured geospatial element-child index),
+ grouped by document-root QNames
+
+###### params
+
+* $database as `xs:unsignedLong`
+
+###### returns `map:map`
+
+##### <a name="func_idx_geospatial-element-pair-indexes_0"/> idx:geospatial-element-pair-indexes\#0
+```xquery
+idx:geospatial-element-pair-indexes() as map:map
+```
+
+ returns a map of `cts:geospatial-element-pair-reference` objects (one for each configured geospatial element-pair index),
+ grouped by document-root QNames
+
+###### returns `map:map`
+
+##### <a name="func_idx_geospatial-element-pair-indexes_1"/> idx:geospatial-element-pair-indexes\#1
+```xquery
+idx:geospatial-element-pair-indexes($database as xs:unsignedLong) as map:map
+```
+
+ returns a map of `cts:geospatial-element-pair-reference` objects (one for each configured geospatial element-pair index),
+ grouped by document-root QNames
+
+###### params
+
+* $database as `xs:unsignedLong`
+
+###### returns `map:map`
+
+##### <a name="func_idx_geospatial-element-indexes_0"/> idx:geospatial-element-indexes\#0
+```xquery
+idx:geospatial-element-indexes() as map:map
+```
+
+ returns a map of `cts:geospatial-element-reference` objects (one for each configured geospatial element index),
+ grouped by document-root QNames
+
+###### returns `map:map`
+
+##### <a name="func_idx_geospatial-element-indexes_1"/> idx:geospatial-element-indexes\#1
+```xquery
+idx:geospatial-element-indexes($database as xs:unsignedLong) as map:map
+```
+
+ returns a map of `cts:geospatial-element-reference` objects (one for each configured geospatial element index),
+ grouped by document-root QNames
+
+###### params
+
+* $database as `xs:unsignedLong`
+
+###### returns `map:map`
+
+##### <a name="func_idx_geospatial-path-indexes_0"/> idx:geospatial-path-indexes\#0
+```xquery
+idx:geospatial-path-indexes() as map:map
+```
+
+ returns a map of `cts:geospatial-path-reference` objects (one for each configured geospatial path index),
+ grouped by document-root QNames
+
+###### returns `map:map`
+
+##### <a name="func_idx_geospatial-path-indexes_1"/> idx:geospatial-path-indexes\#1
+```xquery
+idx:geospatial-path-indexes($database as xs:unsignedLong) as map:map
+```
+
+ returns a map of `cts:geospatial-path-reference` objects (one for each configured geospatial path index),
+ grouped by document-root QNames
+
+###### params
+
+* $database as `xs:unsignedLong`
+
+###### returns `map:map`
+
 ##### <a name="func_idx_range-indexes_0"/> idx:range-indexes\#0
 ```xquery
 idx:range-indexes() as map:map
 ```
 
- returns a map of `cts:reference` objects, grouped by document-root QNames
+ returns a map of `cts:reference` objects (one for each configured range index),
+ grouped by document-root QNames
 
 ###### returns `map:map`
 
@@ -129,7 +250,8 @@ idx:range-indexes() as map:map
 idx:range-indexes($database as xs:unsignedLong) as map:map
 ```
 
- returns a map of `cts:reference` objects, grouped by document-root QNames
+ returns a map of `cts:reference` objects (one for each configured range index),
+ grouped by document-root QNames
 
 ###### params
 
@@ -142,7 +264,8 @@ idx:range-indexes($database as xs:unsignedLong) as map:map
 idx:all() as map:map
 ```
 
- returns a map of map-serialized `cts:reference` objects, grouped by document-root QNames
+ returns a map of map-serialized `cts:reference` objects(one for each configured range index),
+ grouped by document-root QNames
 
 ###### returns `map:map`
 

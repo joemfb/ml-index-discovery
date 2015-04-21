@@ -123,7 +123,106 @@ declare function idx:field-indexes($database as xs:unsignedLong) as map:map
 };
 
 (:~
- : returns a map of `cts:reference` objects, grouped by document-root QNames
+ : returns a map of `cts:geospatial-attribute-pair-reference` objects (one for each configured geospatial element-attribute-pair index),
+ : grouped by document-root QNames
+ :)
+declare function idx:geospatial-attribute-pair-indexes() as map:map
+{
+  idx:geospatial-attribute-pair-indexes( xdmp:database() )
+};
+
+(:~
+ : returns a map of `cts:geospatial-attribute-pair-reference` objects (one for each configured geospatial element-attribute-pair index),
+ : grouped by document-root QNames
+ :)
+declare function idx:geospatial-attribute-pair-indexes($database as xs:unsignedLong) as map:map
+{
+  idx:evaluate-indexes(
+    admin:database-get-geospatial-element-attribute-pair-indexes(admin:get-configuration(), $database))
+};
+
+(: cts:geospatial-json-property-child-reference :)
+(:~
+ : returns a map of `cts:geospatial-element-child-reference` objects (one for each configured geospatial element-child index),
+ : grouped by document-root QNames
+ :)
+declare function idx:geospatial-element-child-indexes() as map:map
+{
+  idx:geospatial-element-child-indexes( xdmp:database() )
+};
+
+(:~
+ : returns a map of `cts:geospatial-element-child-reference` objects (one for each configured geospatial element-child index),
+ : grouped by document-root QNames
+ :)
+declare function idx:geospatial-element-child-indexes($database as xs:unsignedLong) as map:map
+{
+  idx:evaluate-indexes(
+    admin:database-get-geospatial-element-child-indexes(admin:get-configuration(), $database))
+};
+
+(: cts:geospatial-json-property-pair-reference :)
+(:~
+ : returns a map of `cts:geospatial-element-pair-reference` objects (one for each configured geospatial element-pair index),
+ : grouped by document-root QNames
+ :)
+declare function idx:geospatial-element-pair-indexes() as map:map
+{
+  idx:geospatial-element-pair-indexes( xdmp:database() )
+};
+
+(:~
+ : returns a map of `cts:geospatial-element-pair-reference` objects (one for each configured geospatial element-pair index),
+ : grouped by document-root QNames
+ :)
+declare function idx:geospatial-element-pair-indexes($database as xs:unsignedLong) as map:map
+{
+  idx:evaluate-indexes(
+    admin:database-get-geospatial-element-pair-indexes(admin:get-configuration(), $database))
+};
+
+(: cts:geospatial-json-property-reference :)
+(:~
+ : returns a map of `cts:geospatial-element-reference` objects (one for each configured geospatial element index),
+ : grouped by document-root QNames
+ :)
+declare function idx:geospatial-element-indexes() as map:map
+{
+  idx:geospatial-element-indexes( xdmp:database() )
+};
+
+(:~
+ : returns a map of `cts:geospatial-element-reference` objects (one for each configured geospatial element index),
+ : grouped by document-root QNames
+ :)
+declare function idx:geospatial-element-indexes($database as xs:unsignedLong) as map:map
+{
+  idx:evaluate-indexes(
+    admin:database-get-geospatial-element-indexes(admin:get-configuration(), $database))
+};
+
+(:~
+ : returns a map of `cts:geospatial-path-reference` objects (one for each configured geospatial path index),
+ : grouped by document-root QNames
+ :)
+declare function idx:geospatial-path-indexes() as map:map
+{
+  idx:geospatial-path-indexes( xdmp:database() )
+};
+
+(:~
+ : returns a map of `cts:geospatial-path-reference` objects (one for each configured geospatial path index),
+ : grouped by document-root QNames
+ :)
+declare function idx:geospatial-path-indexes($database as xs:unsignedLong) as map:map
+{
+  idx:evaluate-indexes(
+    admin:database-get-geospatial-path-indexes(admin:get-configuration(), $database))
+};
+
+(:~
+ : returns a map of `cts:reference` objects (one for each configured range index),
+ : grouped by document-root QNames
  :)
 declare function idx:range-indexes() as map:map
 {
@@ -131,7 +230,8 @@ declare function idx:range-indexes() as map:map
 };
 
 (:~
- : returns a map of `cts:reference` objects, grouped by document-root QNames
+ : returns a map of `cts:reference` objects (one for each configured range index),
+ : grouped by document-root QNames
  :)
 declare function idx:range-indexes($database as xs:unsignedLong) as map:map
 {
@@ -139,13 +239,18 @@ declare function idx:range-indexes($database as xs:unsignedLong) as map:map
     idx:element-indexes($database),
     idx:element-attribute-indexes($database),
     idx:path-indexes($database),
-    idx:field-indexes($database)
-    (: TODO: implement geospatial indexes :)
+    idx:field-indexes($database),
+    idx:geospatial-attribute-pair-indexes($database),
+    idx:geospatial-element-child-indexes($database),
+    idx:geospatial-element-pair-indexes($database),
+    idx:geospatial-element-indexes($database),
+    idx:geospatial-path-indexes($database)
   ))
 };
 
 (:~
- : returns a map of map-serialized `cts:reference` objects, grouped by document-root QNames
+ : returns a map of map-serialized `cts:reference` objects (one for each configured range index),
+ : grouped by document-root QNames
  :)
 declare function idx:all() as map:map
 {
