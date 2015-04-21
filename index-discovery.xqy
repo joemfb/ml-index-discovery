@@ -17,6 +17,8 @@ import module namespace admin = "http://marklogic.com/xdmp/admin" at "/MarkLogic
 import module namespace ctx = "http://marklogic.com/cts-extensions"
   at "/mlpm_modules/cts-extensions/cts-extensions.xqy";
 
+declare namespace db = "http://marklogic.com/xdmp/database";
+
 declare option xdmp:mapping "false";
 
 (: creates a new map from a sequence of maps, merging values by key :)
@@ -96,6 +98,31 @@ declare function idx:path-indexes($database as xs:unsignedLong) as map:map
 };
 
 (:~
+ : returns a map of `cts:field-reference` objects (one for each configured path-range index),
+ : grouped by document-root QNames
+ :)
+declare function idx:field-indexes() as map:map
+{
+  idx:field-indexes( xdmp:database() )
+};
+
+(:~
+ : returns a map of `cts:field-reference` objects (one for each configured path-range index),
+ : grouped by document-root QNames
+ :)
+declare function idx:field-indexes($database as xs:unsignedLong) as map:map
+{
+  idx:evaluate-indexes(
+    (: field range-indexes can apparently exist without fields ... :)
+    let $config := admin:get-configuration()
+    for $field in admin:database-get-range-field-indexes($config, $database)
+    where
+      try { fn:exists(admin:database-get-field($config, $database, $field/db:field-name)) }
+      catch ($ex) { fn:false() }
+    return $field)
+};
+
+(:~
  : returns a map of `cts:reference` objects, grouped by document-root QNames
  :)
 declare function idx:range-indexes() as map:map
@@ -111,8 +138,9 @@ declare function idx:range-indexes($database as xs:unsignedLong) as map:map
   idx:intersect-maps((
     idx:element-indexes($database),
     idx:element-attribute-indexes($database),
-    idx:path-indexes($database)
-    (: TODO: implement field, geospatial, etc. :)
+    idx:path-indexes($database),
+    idx:field-indexes($database)
+    (: TODO: implement geospatial indexes :)
   ))
 };
 
