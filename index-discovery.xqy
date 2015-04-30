@@ -15,7 +15,7 @@ module namespace idx = "http://marklogic.com/index-discovery";
 
 import module namespace admin = "http://marklogic.com/xdmp/admin" at "/MarkLogic/admin.xqy";
 import module namespace ctx = "http://marklogic.com/cts-extensions"
-  at "/mlpm_modules/cts-extensions/cts-extensions.xqy";
+  at "/ext/mlpm_modules/cts-extensions/cts-extensions.xqy";
 
 declare namespace db = "http://marklogic.com/xdmp/database";
 
