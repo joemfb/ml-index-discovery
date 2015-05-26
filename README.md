@@ -96,7 +96,7 @@ idx:path-indexes($database as xs:unsignedLong) as map:map
 idx:field-indexes() as map:map
 ```
 
- returns a map of `cts:field-reference` objects (one for each configured path-range index),
+ returns a map of `cts:field-reference` objects (one for each configured field-range index),
  grouped by document-root QNames
 
 ###### returns `map:map`
@@ -106,7 +106,7 @@ idx:field-indexes() as map:map
 idx:field-indexes($database as xs:unsignedLong) as map:map
 ```
 
- returns a map of `cts:field-reference` objects (one for each configured path-range index),
+ returns a map of `cts:field-reference` objects (one for each configured field-range index),
  grouped by document-root QNames
 
 ###### params
