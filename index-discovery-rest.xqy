@@ -56,7 +56,7 @@ declare %private function ext:invoke-in($params, $fn)
  : and the current content database
  :)
 declare
-  %roxy:params("database=xs:string?")
+  %roxy:params("database=xs:string?", "strategy=xs:string?")
 function ext:get(
   $context as map:map,
   $params as map:map
@@ -64,13 +64,18 @@ function ext:get(
 {
   map:put($context, "output-types", "application/json"),
 
-  document {
-    ext:invoke-in($params, function() {
-      xdmp:to-json(
-        map:new((
-          map:entry("current-database", xdmp:database-name(xdmp:database())),
-          map:entry("databases", ext:databases()),
-          map:entry("docs", ext:map-values-as-arrays( idx:all() )))))
-    })
-  }
+  let $strategy :=
+    if (map:contains($params, "strategy"))
+    then map:get($params, "strategy")
+    else "root"
+  return
+    document {
+      ext:invoke-in($params, function() {
+        xdmp:to-json(
+          map:new((
+            map:entry("current-database", xdmp:database-name(xdmp:database())),
+            map:entry("databases", ext:databases()),
+            map:entry("docs", ext:map-values-as-arrays( idx:all($strategy) )))))
+      })
+    }
 };
