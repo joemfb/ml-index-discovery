@@ -11,7 +11,7 @@ functions for discovering range indexes and grouping them by document-root QName
 
 Author:  Joe Bryan
 
-Version:  1.1.0
+Version:  2.0.0
 
 #### Table of Contents
 
